@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { monokai } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const AppRules = ({ appName }) => {
     const [rules, setRules] = useState([]);
 
     useEffect(() => {
         const log = () => {
-            const url = `https://${process.env.REACT_APP_TENANT}/api/v2/rules`;
+            const url = `https://${process.env.REACT_APP_TENANT_DOMAIN}/api/v2/rules`;
             const bearer = `Bearer ${process.env.REACT_APP_API_MANAGEMENT_TOKEN}`;
             fetch(url, {
                 method: 'GET',
@@ -36,14 +36,19 @@ const AppRules = ({ appName }) => {
     const rulesToList = [];
 
     rules.forEach(rule => {
-        if (rule.script.includes(`${appName}`)) {
+        if (rule.script.includes(appName)) {
             rulesToList.push(rule);
+            return;
+        }
+
+        if (appName === 'All Applications') {
+            rulesToList.push(rule);
+            return;
         }
     });
 
     return rulesToList.length !== 0 ? (
         <>
-            <p>Rules: </p>
             <ul>
                 {rulesToList.map(rule => {
                     return (
@@ -51,17 +56,24 @@ const AppRules = ({ appName }) => {
                             key={rule.name}
                             trigger={rule.name}
                             triggerStyle={{
-                                fontSize: '1.6rem',
+                                fontSize: '1.2rem',
                                 fontWeight: 'bold',
                                 cursor: 'pointer',
                                 lineHeight: '4rem',
-                                marginBottom: '1rem',
+                                borderBottom: '1px dotted',
                             }}
                         >
+                            <small>
+                                <a
+                                    href={`https://manage.auth0.com/dashboard/us/${process.env.REACT_APP_TENANT}/rules/${rule.id}`}
+                                >
+                                    Edit this rule
+                                </a>
+                            </small>
                             <li>
                                 <SyntaxHighlighter
                                     language="javascript"
-                                    style={monokai}
+                                    style={atomOneLight}
                                 >
                                     {rule.script}
                                 </SyntaxHighlighter>

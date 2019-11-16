@@ -11,8 +11,17 @@ const Profile = () => {
     return (
         <>
             <p>
-                Hi <img src={user.picture} width="15px" alt="Profile" />{' '}
-                {user.name}
+                <a
+                    href={`https://manage.auth0.com/dashboard/us/${process.env.REACT_APP_TENANT}/users/${user.sub}`}
+                >
+                    <img
+                        src={user.picture}
+                        width="25px"
+                        style={{ borderRadius: '50%' }}
+                        alt="Profile"
+                    />{' '}
+                    {user.name}
+                </a>
             </p>
         </>
     );

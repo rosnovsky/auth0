@@ -8,7 +8,7 @@ const Apps = () => {
 
     useEffect(() => {
         const log = () => {
-            const url = `https://${process.env.REACT_APP_TENANT}/api/v2/clients`;
+            const url = `https://${process.env.REACT_APP_TENANT_DOMAIN}/api/v2/clients`;
             const bearer = `Bearer ${process.env.REACT_APP_API_MANAGEMENT_TOKEN}`;
             fetch(url, {
                 method: 'GET',

@@ -24,7 +24,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "test:coverage": "react-scripts test && codecov",
     "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint --fix *.js src/**/*.js"
+    "lint:fix": "eslint --fix src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,6 +32,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src"
+    ], "transformIgnorePatterns": [
+      "node_modules/(?!@a11yDark|(?!hljs))"
     ]
   },
   "browserslist": {
