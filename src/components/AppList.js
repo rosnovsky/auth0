@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledList = styled.ul`
+    list-style-image: url('../ul-bullet.png');
+    font-size: 1.25rem;
+    line-height: 2rem;
+`;
 
 const Apps = () => {
     const [apps, setApps] = useState([]);
@@ -30,20 +37,20 @@ const Apps = () => {
     }, []);
 
     return !user ? (
-        ''
+        'Start by logging in ☝️'
     ) : (
         <div>
             <div style={{ marginBottom: '5rem' }}>
                 <h1>All Your Apps</h1>
                 <small>Click on an app to see what rules apply to it.</small>
             </div>
-            <ul>
+            <StyledList>
                 {apps.map(app => (
                     <li key={app.client_id}>
                         <Link to={app.client_id}>{app.name}</Link>
                     </li>
                 ))}
-            </ul>
+            </StyledList>
         </div>
     );
 };

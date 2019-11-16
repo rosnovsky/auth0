@@ -3,7 +3,9 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <p>&copy; {new Date().getFullYear()}</p>
+            <p>
+                <small>&copy; {new Date().getFullYear()}</small>
+            </p>
         </div>
     );
 };
