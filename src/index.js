@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import { Auth0Provider } from './react-auth0-spa';
-import config from './auth_config.json';
+import config from './auth_config.js';
 
 const onRedirectCallback = appState => {
     window.history.replaceState(

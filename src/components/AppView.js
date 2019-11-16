@@ -3,6 +3,16 @@ import { useAuth0 } from '../react-auth0-spa';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AppRules from './AppRules';
+import styled from 'styled-components';
+
+const StyledAppView = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+`;
 
 const AppView = () => {
     const [app, setApp] = useState([]);
@@ -32,20 +42,15 @@ const AppView = () => {
         log();
     }, [client_id]);
 
-    if (loading || !user) {
-        return <div>Please log in</div>;
-    }
-
     return !user ? (
-        'Please login...'
+        'Please login.'
     ) : (
-        <>
-            {' '}
+        <StyledAppView>
             <h2>
                 <Link to="/">🠐</Link>&nbsp;&nbsp;Rules for {app.name}
             </h2>
             <AppRules appName={app.name} />
-        </>
+        </StyledAppView>
     );
 };
 

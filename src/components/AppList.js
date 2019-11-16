@@ -29,16 +29,14 @@ const Apps = () => {
         log();
     }, []);
 
-    if (loading || !user) {
-        return <div>Please log in</div>;
-    }
-
     return !user ? (
-        'Please login...'
+        ''
     ) : (
-        <>
-            {' '}
-            <p>All Your Apps: </p>
+        <div>
+            <div style={{ marginBottom: '5rem' }}>
+                <h1>All Your Apps</h1>
+                <small>Click on an app to see what rules apply to it.</small>
+            </div>
             <ul>
                 {apps.map(app => (
                     <li key={app.client_id}>
@@ -46,7 +44,7 @@ const Apps = () => {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 };
 

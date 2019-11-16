@@ -6,11 +6,11 @@ import styled from 'styled-components';
 const StyledNavBar = styled.div`
     width: 15rem;
     height: 5rem;
-    border: 1px dotted orange;
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: space-between;
+    self-align: flex-start;
 
     & > * {
         margin-right: 3rem;
@@ -24,6 +24,7 @@ const StyledButton = styled.button`
     text-decoration: underline;
     cursor: pointer;
     margin-right: 1rem;
+    font-weight: bold;
 
     a:visited {
         color: inherit;

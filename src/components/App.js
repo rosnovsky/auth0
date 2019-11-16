@@ -4,10 +4,22 @@ import NavBar from './NavBar';
 import AppView from './AppView';
 import AppList from './AppList';
 import Footer from './Footer';
+import styled from 'styled-components';
+
+const StyledApp = styled.div`
+    width: 50vw;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    align-content: space-between;
+`;
 
 function App() {
     return (
-        <div className="App">
+        <StyledApp>
             <Router>
                 <header>
                     <NavBar />
@@ -18,7 +30,7 @@ function App() {
                 </Switch>
                 <Footer />
             </Router>
-        </div>
+        </StyledApp>
     );
 }
 

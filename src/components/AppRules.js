@@ -29,10 +29,6 @@ const AppRules = ({ appName }) => {
         log();
     }, []);
 
-    if (rules.length === 0) {
-        return <div>Loading...</div>;
-    }
-
     const rulesToList = [];
 
     rules.forEach(rule => {
