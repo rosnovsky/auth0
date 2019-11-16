@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
 import { useParams } from 'react-router-dom';
+import AppRules from './AppRules';
 
 const AppView = () => {
     const [app, setApp] = useState([]);
@@ -28,7 +29,7 @@ const AppView = () => {
                 .catch(error => console.log('BOO!'));
         };
         log();
-    }, []);
+    }, [client_id]);
 
     if (loading || !user) {
         return <div>Please log in</div>;
@@ -39,10 +40,8 @@ const AppView = () => {
     ) : (
         <>
             {' '}
-            <h2>
-                Rules for <strong>{app.name}</strong> App
-            </h2>
-            <ul>{app.name}</ul>
+            <h2>Rules for {app.name}</h2>
+            <AppRules appName={app.name} />
         </>
     );
 };

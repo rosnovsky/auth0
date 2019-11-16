@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import AppView from './AppView';
 import AppList from './AppList';

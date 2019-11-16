@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Apps = () => {
     const [apps, setApps] = useState([]);
