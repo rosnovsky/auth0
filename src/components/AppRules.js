@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledList = styled.ul`
@@ -14,24 +15,15 @@ const AppRules = ({ appName }) => {
     const [rules, setRules] = useState([]);
 
     useEffect(() => {
-        const log = () => {
+        const log = async () => {
             const url = `https://${process.env.REACT_APP_TENANT_DOMAIN}/api/v2/rules`;
             const bearer = `Bearer ${process.env.REACT_APP_API_MANAGEMENT_TOKEN}`;
-            fetch(url, {
-                method: 'GET',
-                withCredentials: true,
-                credentials: 'include',
-                headers: {
-                    Authorization: bearer,
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then(response => response.json())
-                .then(data => {
-                    setRules(data);
-                })
-
-                .catch(error => console.log(error));
+            const data = await axios({
+                method: 'get',
+                url: url,
+                headers: { Authorization: bearer },
+            });
+            setRules(data.data);
         };
         log();
     }, []);
@@ -55,9 +47,8 @@ const AppRules = ({ appName }) => {
             <StyledList>
                 {rulesToList.map(rule => {
                     return (
-                        <li>
+                        <li key={rule.id}>
                             <Collapsible
-                                key={rule.name}
                                 trigger={rule.name}
                                 triggerStyle={{
                                     fontSize: '1.2rem',
