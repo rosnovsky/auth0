@@ -30,7 +30,7 @@ To make this app work with your tenant information, you need to introduce enviro
 
 ### Create a `.env` file
 
-In root directory of the project, create a `.env` file. You will need to get your Management API Token (go to APIs in your Auth0 Dashboard, select `Management API`, click on `API Explorer`; read more [here](https://auth0.com/docs/api/management/v2/get-access-tokens-for-test)), your tenant domain, tenant name, and Client ID (the id of the application you've created in the setup step). **WARNING**: Do not use this token in production or if you'll deploy your app to public.
+In root directory of the project, create a `.env` file. You will need to get your Management API Token (go to APIs in your Auth0 Dashboard, select `Management API`, click on `API Explorer`; read more [here](https://auth0.com/docs/api/management/v2/get-access-tokens-for-test)), your tenant domain, tenant name, and Client ID (the id of the application you've created in the setup step). **WARNING**: Do not use this token in production or if you're planning to deploy your app to public.
 
 Place the following into your `.env.local` file:
 
@@ -74,9 +74,9 @@ Go to `http://localhost:3000` to access the app. Login with your Auth0 credentia
 
 ## Deploy in 60 seconds (totally optional)
 
-**WARNING**: Unless you're OK with your API management token and app ClientID to be available publicly to those wishing to get this information, DO NOT deploy this app outside of your intranet. When deployed to the public internet, your tokens will be exposed in the source code of the app, and could be used to access your account.
+**WARNING**: Unless you're OK with your API management token and app ClientID to be available publicly to those wishing to get this information, **DO NOT** deploy this app outside of your intranet. When deployed to the public internet, **YOUR TOKEN WILL BE EXPOSED** in the source code of the app, and could be used to access your account.
 
-To give your team instant access to the app, you can deploy it to the web in under a minute. You will need [Now](https://now.sh) account for this (it's free). After you've created an account, follow these in the terminal:
+To give your team instant access to the app (bearing in mind the warning above), you can deploy it to the web in under a minute. You will need [Now](https://now.sh) account for this (it's free). After you've created an account, follow these in the terminal:
 
 ```bash
 npm install -g now
