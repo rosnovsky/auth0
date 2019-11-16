@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '../react-auth0-spa';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AppRules from './AppRules';
 
 const AppView = () => {
@@ -40,7 +41,9 @@ const AppView = () => {
     ) : (
         <>
             {' '}
-            <h2>Rules for {app.name}</h2>
+            <h2>
+                <Link to="/">🠐</Link>&nbsp;&nbsp;Rules for {app.name}
+            </h2>
             <AppRules appName={app.name} />
         </>
     );
