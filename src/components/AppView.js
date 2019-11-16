@@ -17,7 +17,7 @@ const StyledAppView = styled.div`
 
 const AppView = () => {
     const [app, setApp] = useState([]);
-    const { loading, user } = useAuth0();
+    const { user } = useAuth0();
     const { client_id } = useParams();
 
     useEffect(() => {

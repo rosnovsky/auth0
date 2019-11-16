@@ -30,12 +30,16 @@ const AppRules = ({ appName }) => {
 
     const rulesToList = [];
 
+    // Here we check if this current app is mentioned in any of your rules. If so, we will display it, otherwise, why would we? :)
+
+    // The check here is rather simple: is the app name mentioned in a rule or not. If you need to do any kind of fancy conditional checks as well, this is a good place to put them. For instance, you may also want to check if rule.enabled is true and only output active rules.
     rules.forEach(rule => {
         if (rule.script.includes(appName)) {
             rulesToList.push(rule);
             return;
         }
 
+        // This is a special case, where we display all available rules for all your applications in a single list.
         if (appName === 'All Applications') {
             rulesToList.push(rule);
             return;
@@ -48,6 +52,7 @@ const AppRules = ({ appName }) => {
                 {rulesToList.map(rule => {
                     return (
                         <li key={rule.id}>
+                            {/* For your convenience, if you click on a rule, it will expand to display its code. You can also click 'Edit this rule' to update it. */}
                             <Collapsible
                                 trigger={rule.name}
                                 triggerStyle={{
