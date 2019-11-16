@@ -1,6 +1,10 @@
 # Auth0 Application Rules App
 
+**WARNING:** Please, keep in mind that this app is a proof-of-concept, and does not take into consideration every security option available, your security policies, specific scopes, and other things you'd need to take care of.
+
 ## Overview
+
+This app runs entirely in the browser and doesn't require a backend server. This has security implications, please see them below. 
 
 This app allows you to input your ![auth](public/ul-bullet.png)[Auth0](https://auth0.com) credentials, and list all your apps with corresponding rules.
 
@@ -26,7 +30,7 @@ To make this app work with your tenant information, you need to introduce enviro
 
 ### Create a `.env` file
 
-In root directory of the project, create a `.env` file. You will need to get your Management API Token (go to APIs in your Auth0 Dashboard, select `Management API`, click on `API Explorer`; read more [here](https://auth0.com/docs/api/management/v2/get-access-tokens-for-test)), your tenant domain, tenant name, and Client ID (the id of the application you've created in the setup step)
+In root directory of the project, create a `.env` file. You will need to get your Management API Token (go to APIs in your Auth0 Dashboard, select `Management API`, click on `API Explorer`; read more [here](https://auth0.com/docs/api/management/v2/get-access-tokens-for-test)), your tenant domain, tenant name, and Client ID (the id of the application you've created in the setup step). **WARNING**: Do not use this token in production or if you'll deploy your app to public.
 
 Place the following into your `.env.local` file:
 
@@ -70,6 +74,8 @@ Go to `http://localhost:3000` to access the app. Login with your Auth0 credentia
 
 ## Deploy in 60 seconds (totally optional)
 
+**WARNING**: Unless you're OK with your API management token and app ClientID to be available publicly to those wishing to get this information, DO NOT deploy this app outside of your intranet. When deployed to the public internet, your tokens will be exposed in the source code of the app, and could be used to access your account.
+
 To give your team instant access to the app, you can deploy it to the web in under a minute. You will need [Now](https://now.sh) account for this (it's free). After you've created an account, follow these in the terminal:
 
 ```bash
@@ -82,6 +88,6 @@ Now set up your CLI to work with your new Now account:
 now
 ```
 
-Enter your Now credentials and you're all set. Now, `cd` to the project's root folder and just type `now` in your command line. This will trigger a deployment of this app, and a URL will be copied to clipboard as soon as it's ready. 
+Enter your Now credentials and you're all set. Now, `cd` to the project's root folder and just type `now` in your command line. This will trigger a deployment of this app, and a URL will be copied to clipboard as soon as it's ready.
 
 (If you are me, you can see this app in action [here](https://auth0.rosnovsky.now.sh))
