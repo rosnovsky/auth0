@@ -1,19 +1,26 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    useParams,
+} from 'react-router-dom';
 import NavBar from './NavBar';
-import { useAuth0 } from '../react-auth0-spa';
+import AppView from './AppView';
+import AppList from './AppList';
 
 function App() {
-    const { loading } = useAuth0();
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     return (
         <div className="App">
-            <header>
-                <NavBar />
-            </header>
+            <Router>
+                <header>
+                    <NavBar />
+                </header>
+                <Switch>
+                    <Route path="/" exact component={AppList} />
+                    <Route path="/:client_id" component={AppView} />
+                </Switch>
+            </Router>
         </div>
     );
 }
